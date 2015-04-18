@@ -14,7 +14,7 @@ func TestGetTemplateDirectories(t *testing.T) {
 	pathVar := os.Getenv(key)
 	defer os.Setenv(key, pathVar)
 
-	os.Unsetenv(key)
+	os.Setenv(key, "")
 	paths = lib.GetTemplateDirectories()
 	if len(paths) != 0 {
 		t.Errorf("empty slice not returned if env var %s not set", key)

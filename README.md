@@ -6,7 +6,7 @@ An easy, fast and portable way to retrieve files you copy around repeatedly.
 **gimme** works by traversing a list of directories looking for the file you want. As soon as the file is found, it is copied to your current working directory. In short, it is given to you.
 
 1. [installation](#installation)
-1. [setting up][setup]
+1. [setting up](#setup)
 1. [usage](#usage)
 1. [todo](#todo)
 1. [license](#license)
@@ -58,6 +58,7 @@ Showing help information:
 * [ ] more information for Windows users
 * [ ] default gimme path, thus not amust to set environment variable
 * [ ] add version information
+* [ ] allow programmatic adding of predefined paths e.g. Dropbox folder
 
 
 <a name="license"></a>

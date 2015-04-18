@@ -1,3 +1,6 @@
 # getme executable
 getme
 
+# distribution files
+dist/
+

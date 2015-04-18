@@ -8,3 +8,28 @@ go:
 install: make deps
 script: make test
 
+before_deploy:
+  - PATH="$HOME/gopath/bin:$PATH" make dist
+deploy:
+  provider: releases
+  file:
+    - dist/getme.darwin-386
+    - dist/getme.darwin-amd64
+    - dist/getme.linux-386
+    - dist/getme.linux-amd64
+    - dist/getme.linux-arm
+    - dist/getme.freebsd-386
+    - dist/getme.freebsd-amd64
+    - dist/getme.openbsd-386
+    - dist/getme.openbsd-amd64
+    - dist/getme.windows-386.exe
+    - dist/getme.windows-amd64.exe
+    - dist/getme.freebsd-arm
+    - dist/getme.netbsd-386
+    - dist/getme.netbsd-amd64
+    - dist/getme.netbsd-arm
+    - dist/getme.plan9-386
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master

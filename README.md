@@ -1,6 +1,8 @@
 
 # getme
 
+[![Build Status](https://travis-ci.org/GochoMugo/getme.svg)](https://travis-ci.org/GochoMugo/getme)
+
 An easy, fast and portable way to retrieve files you copy around repeatedly.
 
 **getme** works by traversing a list of directories looking for the file you want. As soon as the file is found, it is copied to your current working directory. In short, it is given to you.

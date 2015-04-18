@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/GochoMugo/gimme/lib"
+	"github.com/GochoMugo/getme/lib"
 	"os"
 	"path"
 	"testing"
@@ -9,7 +9,7 @@ import (
 
 func TestGetTemplateDirectories(t *testing.T) {
 	var paths []string
-	key := "GIMME_PATH"
+	key := "GETME_PATH"
 
 	pathVar := os.Getenv(key)
 	defer os.Setenv(key, pathVar)

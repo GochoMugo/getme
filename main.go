@@ -1,20 +1,20 @@
 package main
 
 import (
-	"github.com/GochoMugo/gimme/lib"
+	"github.com/GochoMugo/getme/lib"
 	"os"
 )
 
 const helpInfo = `
-  gimme by GochoMugo <mugo@forfuture.co.ke>
+  getme by GochoMugo <mugo@forfuture.co.ke>
 
-  gimme                   show this help information
-  gimme <file1> ...       give me those files
+  getme                   show this help information
+  getme <file1> ...       give me those files
 
   notes:
-    1. gimme relies on the environment variable, GIMME_PATH
-    2. On *nix, $GIMME_PATH is delimited using : (full-colon)
-    3. On Windows, GIMME_PATH is delimited using ; (semi-colon)
+    1. getme relies on the environment variable, GETME_PATH
+    2. On *nix, $GETME_PATH is delimited using : (full-colon)
+    3. On Windows, GETME_PATH is delimited using ; (semi-colon)
 `
 
 func main() {
@@ -28,7 +28,7 @@ func main() {
 	for _, itemname := range os.Args[1:] {
 		paths := lib.GetTemplateDirectories()
 		if len(paths) == 0 {
-			lib.LogError("not set: GIMME_PATH")
+			lib.LogError("not set: GETME_PATH")
 			return
 		}
 		itemPath := lib.SearchItem(paths, itemname)

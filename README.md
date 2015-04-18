@@ -1,9 +1,9 @@
 
-# gimme
+# getme
 
 An easy, fast and portable way to retrieve files you copy around repeatedly.
 
-**gimme** works by traversing a list of directories looking for the file you want. As soon as the file is found, it is copied to your current working directory. In short, it is given to you.
+**getme** works by traversing a list of directories looking for the file you want. As soon as the file is found, it is copied to your current working directory. In short, it is given to you.
 
 1. [installation](#installation)
 1. [setting up](#setup)
@@ -18,7 +18,7 @@ An easy, fast and portable way to retrieve files you copy around repeatedly.
 Using Go tools:
 
 ```bash
-⇒ go get github.com/GochoMugo/gimme
+⇒ go get github.com/GochoMugo/getme
 ```
 
 
@@ -28,7 +28,7 @@ Using Go tools:
 On *nix machines, you could add the following line to `~/.bashrc` (or equivalent file):
 
 ```sh
-export GIMME_PATH="path/to/some/dir:another/path"
+export GETME_PATH="path/to/some/dir:another/path"
 ```
 
 On Windows machines, you need to use the Control panel.
@@ -40,13 +40,13 @@ On Windows machines, you need to use the Control panel.
 Getting some files fast:
 
 ```bash
-⇒ gimme LICENSE-MIT .jshintrc
+⇒ getme LICENSE-MIT .jshintrc
 ```
 
 Showing help information:
 
 ```bash
-⇒ gimme
+⇒ getme
 ```
 
 
@@ -56,7 +56,7 @@ Showing help information:
 * [ ] allow templates, compiled while giving user
 * [ ] allow path prefixes, which in turn allows files with same name
 * [ ] more information for Windows users
-* [ ] default gimme path, thus not amust to set environment variable
+* [ ] default getme path, thus not amust to set environment variable
 * [ ] add version information
 * [ ] allow programmatic adding of predefined paths e.g. Dropbox folder
 

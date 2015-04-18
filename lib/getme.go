@@ -13,7 +13,7 @@ import (
 * is not set
  */
 func GetTemplateDirectories() []string {
-	pathVar := os.Getenv("GIMME_PATH")
+	pathVar := os.Getenv("GETME_PATH")
 	if pathVar == "" {
 		return []string{}
 	}

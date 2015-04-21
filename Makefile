@@ -1,4 +1,4 @@
-test:
+test: clean
 	go test -v ./test
 
 deps:
@@ -9,5 +9,8 @@ dist:
 	gox -build-toolchain
 	gox -output "dist/{{.Dir}}.{{.OS}}-{{.Arch}}"
 
-.PHONY: test
+clean:
+	rm -r test/test_*
+
+.PHONY: test deps clean
 

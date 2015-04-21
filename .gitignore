@@ -4,3 +4,6 @@ getme
 # distribution files
 dist/
 
+# test-generated files
+test_*
+

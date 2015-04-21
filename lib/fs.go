@@ -61,3 +61,12 @@ func CopyItem(itemPath string, destination string) error {
 	_, err := shutil.Copy(itemPath, destination, true)
 	return err
 }
+
+/**
+* WriteFile writes file to disk. Also overwites the file. It is a
+* convenience wrapper
+*/
+func WriteFile(filename string, content []byte) (err error) {
+  err = ioutil.WriteFile(filename, content, 0644)
+  return
+}

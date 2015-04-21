@@ -70,3 +70,17 @@ func TestSearchItem(t *testing.T) {
 		t.Errorf("searching for non-exisitng file")
 	}
 }
+
+func TestWriteFile(t *testing.T) {
+  write := func() {
+    err := lib.WriteFile("test_newfile", []byte{})
+    if err != nil {
+      t.Errorf("failed to write file: %s", err)
+      return
+    }
+  }
+
+  // write twice to ensure we can overwrite a file
+  write()
+  write()
+}

@@ -9,26 +9,27 @@ import (
 
 func TestGetTemplateDirectories(t *testing.T) {
 	var paths []string
+	var err error
 	key := "GETME_PATH"
 
 	pathVar := os.Getenv(key)
 	defer os.Setenv(key, pathVar)
 
-	os.Setenv(key, "")
-	paths = lib.GetTemplateDirectories()
-	if len(paths) != 0 {
-		t.Errorf("empty slice not returned if env var %s not set", key)
+	os.Setenv(key, "") // same as os.Unsetenv, but compatible with go 1.3
+	paths, err = lib.GetTemplateDirectories()
+	if len(paths) != 1 && err != nil {
+		t.Errorf("slice with only homedir not returned if env var %s not set", key)
 	}
 
 	os.Setenv(key, "dirA")
-	paths = lib.GetTemplateDirectories()
-	if paths[0] != "dirA" {
+	paths, err = lib.GetTemplateDirectories()
+	if paths[1] != "dirA" && err != nil {
 		t.Errorf("single path in env var %s", key)
 	}
 
 	os.Setenv(key, "dirA:dirB")
-	paths = lib.GetTemplateDirectories()
-	if len(paths) != 2 || paths[0] != "dirA" || paths[1] != "dirB" {
+	paths, err = lib.GetTemplateDirectories()
+	if paths[1] != "dirA" || paths[2] != "dirB" && err != nil {
 		t.Errorf("separator (:) not respected in env var %s", key)
 	}
 }

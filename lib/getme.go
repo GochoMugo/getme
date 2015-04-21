@@ -3,6 +3,7 @@ package lib
 import (
 	shutil "github.com/termie/go-shutil"
 	"os"
+	"os/user"
 	"path"
 	"strings"
 )
@@ -12,12 +13,15 @@ import (
 * may be placed in. Note: returns an empty slice if env var $GIMME_PATH
 * is not set
  */
-func GetTemplateDirectories() []string {
-	pathVar := os.Getenv("GETME_PATH")
-	if pathVar == "" {
-		return []string{}
+func GetTemplateDirectories() (paths []string, err error) {
+	usr, err := user.Current()
+	if err != nil {
+		return
 	}
-	return strings.Split(pathVar, ":")
+	paths = append(paths, path.Join(usr.HomeDir, ".getme"))
+	pathVar := os.Getenv("GETME_PATH")
+	paths = append(paths, strings.Split(pathVar, ":")...)
+	return
 }
 
 /**

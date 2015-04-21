@@ -5,6 +5,10 @@
 
 An easy, fast and portable way to retrieve files somewhere.
 
+> Work In Progress
+>
+> Things haven't gotten stable yet :construction_worker:
+
 **getme** works by traversing a list of directories looking for the file you want. As soon as the file is found, it is copied to your current working directory. It can also retrieve the file from a remote source, such as Github. In short, it is given to you.
 
 1. [features](#features)

@@ -29,4 +29,10 @@ func TestDownloadFromGithub(t *testing.T) {
 		t.Errorf("content downloaded does not seem right")
 		return
 	}
+
+  _, err = lib.DownloadFromGithub(shorthand, branch, "missing")
+  if err == nil {
+    t.Errorf("error is not thrown for missing file from remote")
+  }
 }
+

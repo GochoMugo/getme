@@ -10,7 +10,7 @@ dist:
 	gox -output "dist/{{.Dir}}.{{.OS}}-{{.Arch}}"
 
 clean:
-	rm -r test/test_*
+	rm -rf test/test_*
 
 .PHONY: test deps clean
 

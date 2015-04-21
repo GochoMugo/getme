@@ -1,6 +1,7 @@
 package lib
 
 import (
+  "io/ioutil"
 	shutil "github.com/termie/go-shutil"
 	"os"
 	"os/user"

@@ -2,45 +2,46 @@ package main
 
 import (
 	"github.com/GochoMugo/getme/lib"
-	"os"
+	"github.com/spf13/cobra"
 )
 
-const helpInfo = `
-  getme by GochoMugo <mugo@forfuture.co.ke>
+var getmeCmd = &cobra.Command{
+  Use: "getme",
+  Short: "getme is an easy way to retrieve files",
+  Run: func(cmd *cobra.Command, args []string) {
+    lib.LogNormal("nothing to do")
+  },
+}
 
-  getme                   show this help information
-  getme <file1> ...       give me those files
+var localCmd = &cobra.Command{
+  Use: "local",
+  Short: "use local file-system",
+  Run: func(cmd *cobra.Command, args[] string) {
+    lib.LocalGetMany(args)
+  },
+}
 
-  notes:
-    1. getme relies on the environment variable, GETME_PATH
-    2. On *nix, $GETME_PATH is delimited using : (full-colon)
-    3. On Windows, GETME_PATH is delimited using ; (semi-colon)
-`
+var remoteGithub bool
+var remoteCmd = &cobra.Command{
+  Use: "remote",
+  Short: "use remote source",
+  Run: func(cmd *cobra.Command, args []string) {
+    var whichRemote string
+    if remoteGithub {
+      whichRemote = "github"
+    }
+    lib.RemoteGet(whichRemote, args)
+  },
+}
+
 
 func main() {
-	files := os.Args[1:]
-	cwd, _ := os.Getwd()
-	if len(files) == 0 {
-		// show help information
-		lib.LogRaw(helpInfo)
-		return
-	}
-	for _, itemname := range os.Args[1:] {
-		paths := lib.GetTemplateDirectories()
-		if len(paths) == 0 {
-			lib.LogError("not set: GETME_PATH")
-			return
-		}
-		itemPath := lib.SearchItem(paths, itemname)
-		if itemPath == "" {
-			lib.LogError("not found: " + itemname)
-			continue
-		}
-		err := lib.CopyItem(itemPath, cwd)
-		if err != nil {
-			lib.LogError("not copied: " + itemname)
-			continue
-		}
-		lib.LogSuccess("given you: " + itemname)
-	}
+  // adding flags
+  remoteCmd.Flags().BoolVarP(&remoteGithub, "github", "g", false,
+    "from github")
+
+  // adding commands
+  getmeCmd.AddCommand(localCmd)
+  getmeCmd.AddCommand(remoteCmd)
+  getmeCmd.Execute()
 }

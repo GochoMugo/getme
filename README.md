@@ -11,6 +11,7 @@ An easy, fast and portable way to retrieve files somewhere.
 1. [installation](#installation)
 1. [usage](#usage)
 1. [configuration](#configuration)
+1. [utilities](#utils)
 1. [license](#license)
 
 
@@ -67,7 +68,7 @@ This will make `getme` look for the files *LICENSE-MIT* and *.jshintrc* in the c
 <a name="configuration"></a>
 ## configuration:
 
-`getme` can be used as is, without any modification. It will automatically look for files in directory **.getme** in your Home directory.
+`getme` can be used as is, without any configurations. It will automatically look for files in directory **.getme** in your Home directory.
 
 <a name="dir"></a>
 ### add template directories:
@@ -81,6 +82,12 @@ export GETME_PATH="path/to/some/dir:another/path"
 ```
 
 On Windows machines, you need to use the Control panel.
+
+
+<a name="utils"></a>
+## utilities:
+
+To increase productivity (every boss likes that), I've added some utilities to the [utils](https://github.com/GochoMugo/getme/tree/master/utils) directory that can be quite useful. These utilities may not be as portable as the `getme` program itself but we shall try our best.
 
 
 <a name="license"></a>

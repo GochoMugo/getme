@@ -54,6 +54,12 @@ This will make `getme` look for the files *LICENSE-MIT* and *.jshintrc* in the c
 
 ### remote:
 
+#### getting files from a Url:
+
+```bash
+getme remote --url https://gochomugo.github.io/feed.xml feed.xml
+```
+
 #### getting files from Github:
 
 ```bash

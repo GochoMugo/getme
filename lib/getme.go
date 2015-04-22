@@ -60,5 +60,19 @@ func RemoteGet(whichRemote string, args []string) {
       return
     }
     LogSuccess("downloaded and written to ", TextBold(filename))
+  case "url":
+    url, filename := args[0], args[1]
+    LogNormal("dowloading from ", TextUnderline(url))
+    content, err = DownloadFromUrl(url)
+    if err != nil {
+      LogError("failed to download from url: ", TextBold(err.Error()))
+      return
+    }
+    err = WriteFile(filename, content)
+    if err != nil {
+      LogError("failed to write file: ", TextBold(err.Error()))
+      return
+    }
+    LogSuccess("downloaded and written to ", TextBold(filename))
   }
 }

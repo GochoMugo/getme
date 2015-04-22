@@ -22,6 +22,7 @@ var localCmd = &cobra.Command{
 }
 
 var remoteGithub bool
+var remoteUrl bool
 var remoteCmd = &cobra.Command{
   Use: "remote",
   Short: "use remote source",
@@ -29,6 +30,9 @@ var remoteCmd = &cobra.Command{
     var whichRemote string
     if remoteGithub {
       whichRemote = "github"
+    }
+    if remoteUrl {
+      whichRemote = "url"
     }
     lib.RemoteGet(whichRemote, args)
   },
@@ -39,6 +43,8 @@ func main() {
   // adding flags
   remoteCmd.Flags().BoolVarP(&remoteGithub, "github", "g", false,
     "from github")
+  remoteCmd.Flags().BoolVarP(&remoteUrl, "url", "u", false,
+    "from an url")
 
   // adding commands
   getmeCmd.AddCommand(localCmd)

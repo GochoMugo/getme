@@ -9,6 +9,23 @@ import (
 	"testing"
 )
 
+
+func TestFetch(t *testing.T) {
+  actualUrl := "https://raw.githubusercontent.com/GochoMugo/getme/master/LICENSE"
+  bogusUrl := "https://raw.githubusercontent.com/GochoMugo/getme/master/index.js"
+
+  _, err := lib.Fetch(actualUrl)
+  if err != nil {
+    t.Errorf("Error dowloading from URL")
+    return
+  }
+
+  _, err = lib.Fetch(bogusUrl)
+  if err == nil {
+    t.Errorf("Error not thrown on a bogus url")
+  }
+}
+
 func TestDownloadFromGithub(t *testing.T) {
 	shorthand := "GochoMugo/getme"
 	branch := "master"
